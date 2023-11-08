@@ -27,10 +27,14 @@ export const WeatherApp = () => {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}
             `)
+            if (!response.ok) {
+                throw new Error('La ciudad no existe');
+            }
             const data = await response.json()
             setDataWeather(data)
         } catch (error) {
             console.error('Ocurrio el siguiente problema: ', error)
+            alert(error.message)
         }
     }
 
