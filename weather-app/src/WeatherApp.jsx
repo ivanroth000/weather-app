@@ -77,10 +77,19 @@ export const WeatherApp = () => {
                     <img className='iconWeather' src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
                     <p className='temperature'>{dataWeather?.main?.temp} ºC</p>
                     </div>
-                    <p className='meteorologicalConditions'>Meteorological conditions: {dataWeather.weather[0].description}</p>
+                    <div className='subIcon'>
+                        <img className='iconCondicion me-2' src="../img/condicion-climatica.png" alt="" />
+                    <p className='meteorologicalConditions mt-3'>Meteorological conditions: {dataWeather.weather[0].description}</p>
+                    </div>
                     <ul className='weatherList mt-4 pb-5'>
+                        <div className='subIcon'>
+                            <img className='iconHumedad me-2' src="../img/humedad.png" alt="" />
                         <li>Humidity: {dataWeather.main.humidity}%</li>
+                        </div>
+                        <div className='subIcon'>
+                        <img className='iconVisibility  me-2' src="../img/visibilidad.png" alt="" />
                         <li className='mt-3'>Visibility: {dataWeather.visibility / difVisibility}km</li>
+                        </div>
                     </ul>
                     
                 </div>

@@ -116,6 +116,26 @@ body {
     height: 120px;
     
   }
+
+  .subIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .iconCondicion{
+    width: 30px;
+
+  }
+
+  .iconHumedad{
+    width: 27px;
+  }
+
+  .iconVisibility{
+    width: 30px;
+    margin-top: 10px
+  }
   
 
   /* Estilos para móviles */
