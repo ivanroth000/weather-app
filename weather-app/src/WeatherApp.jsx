@@ -10,6 +10,7 @@ export const WeatherApp = () => {
     const [isValid, setIsValid] = useState(true)
     const [error, setError] = useState('')
     
+    const difVisibility = 1000
 
     const handleCity = (e) => {
         setCity(e.target.value)
@@ -65,16 +66,16 @@ export const WeatherApp = () => {
            }
         {
             dataWeather && (
-                <div>
+                <div className='cardWeather'>
                     <h2>
                         {dataWeather.name}
                     </h2>
-                    <p>
-                        Temperature: {dataWeather?.main?.temp} ºC
-                    </p>
-                    <p className='meteorologicalConditions'>
-                        Meteorological conditions: {dataWeather.weather[0].description}
-                    </p>
+                    <ul className='weatherList'>
+                        <li>Temperature: {dataWeather?.main?.temp} ºC</li>
+                        <li>Humidity: {dataWeather.main.humidity}%</li>
+                        <li className='meteorologicalConditions'>Meteorological conditions: {dataWeather.weather[0].description}</li>
+                        <li>Visibility: {dataWeather.visibility / difVisibility}km</li>
+                    </ul>
                     <img src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
                 </div>
             )

@@ -8,6 +8,13 @@ body {
     background-color: rgb(83, 150, 226);
   }
 
+  .cardWeather{
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-top:1px;
+    border-radius: 10px;
+    margin-top: 45px;
+  }
+
   .inputError{
     border: 2px solid red;
 }
@@ -47,12 +54,26 @@ body {
     border-radius: 4px;
   }
   
+  .weatherList{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 40px;
+    
+  }
+
+  .weatherList li{
+    width: 50%;
+    margin-top: 15px;
+  }
+
   button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 7px;
     cursor: pointer;
     margin-left: 15px;
   }
@@ -69,11 +90,6 @@ body {
     margin-top: 50px;
   }
   
-  p {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: 400;
-  }
 
   .meteorologicalConditions{
     text-transform: capitalize;
@@ -81,8 +97,8 @@ body {
   }
   
   img {
-    width: 150px;
-    height: 150px;
+    width: 175px;
+    height: 175px;
     
   }
   
