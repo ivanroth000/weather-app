@@ -1,5 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useRef } from 'react'
+import { useState,} from 'react'
+import { useEffect } from 'react'
 
 export const WeatherApp = () => {
 
@@ -41,13 +42,20 @@ export const WeatherApp = () => {
         }
     }
 
+    const inputRef = useRef()
+    useEffect(() => {
+      inputRef.current.focus()
+    }, [])
+    
+
   return (
       <> <div className='container'>
       <h1>Aplicación del Clima</h1>
         <form onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
             type="text" 
-            value={city} 
+            value={city}
+            ref={inputRef} 
             onChange={handleCity}
             />
             <button type='submit'>Buscar</button>
@@ -62,7 +70,10 @@ export const WeatherApp = () => {
                         {dataWeather.name}
                     </h2>
                     <p>
-                        Temperatura: {dataWeather?.main?.temp} ºC
+                        Temperature: {dataWeather?.main?.temp} ºC
+                    </p>
+                    <p className='meteorologicalConditions'>
+                        Meteorological conditions: {dataWeather.weather[0].description}
                     </p>
                     <img src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
                 </div>

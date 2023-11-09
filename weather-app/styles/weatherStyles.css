@@ -27,15 +27,19 @@ body {
   }
   
   h1 {
-    font-size: 24px;
+    font-size: 35px;
+    font-weight: bolder;
     margin-bottom: 20px;
   }
   
   form {
     display: flex;
     margin-bottom: 20px;
+    margin-top: 40px;
   }
   
+  
+
   input{
     flex: 1;
     padding: 10px;
@@ -60,18 +64,26 @@ body {
   
 
   h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
   }
   
   p {
-    margin: 5px;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .meteorologicalConditions{
+    text-transform: capitalize;
+   
   }
   
   img {
     width: 150px;
     height: 150px;
-    margin-top: 10px;
+    
   }
   
   /* Estilos para móviles */
