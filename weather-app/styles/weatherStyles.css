@@ -8,11 +8,18 @@ body {
     background-color: rgb(83, 150, 226);
   }
 
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .cardWeather{
     background-color: rgba(255, 255, 255, 0.5);
     padding-top:1px;
     border-radius: 10px;
     margin-top: 45px;
+    
   }
 
   .inputError{
@@ -56,17 +63,10 @@ body {
   
   .weatherList{
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     padding-right: 40px;
     
   }
 
-  .weatherList li{
-    width: 50%;
-    margin-top: 15px;
-  }
 
   button {
     padding: 10px 20px;
@@ -82,26 +82,42 @@ body {
     background-color: #0056b3;
   }
   
-  
+  .cityIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   h2 {
     font-size: 30px;
     font-weight: bold;
-    margin-top: 50px;
+   
+    margin-top: 20px;
   }
   
-
+  .temperature{
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 20px;
+  }
   .meteorologicalConditions{
     text-transform: capitalize;
-   
+    font-weight: bold;
   }
   
-  img {
-    width: 175px;
-    height: 175px;
+  .earthIcon{
+    width: 70px;
+    margin-left: 25px;
+    margin-top: 5px;
+  }
+
+  .iconWeather {
+    width: 120px;
+    height: 120px;
     
   }
   
+
   /* Estilos para móviles */
   @media (max-width: 600px) {
     h1 {

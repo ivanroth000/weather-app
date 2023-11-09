@@ -51,7 +51,10 @@ export const WeatherApp = () => {
 
   return (
       <> <div className='container'>
+        
       <h1>Aplicación del Clima</h1>
+      <img className='earthIcon' src="../img/clima.png" alt="" />
+     
         <form onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
             type="text" 
@@ -70,13 +73,16 @@ export const WeatherApp = () => {
                     <h2>
                         {dataWeather.name}
                     </h2>
-                    <ul className='weatherList'>
-                        <li>Temperature: {dataWeather?.main?.temp} ºC</li>
+                    <div className='cityIcon'>
+                    <img className='iconWeather' src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
+                    <p className='temperature'>{dataWeather?.main?.temp} ºC</p>
+                    </div>
+                    <p className='meteorologicalConditions'>Meteorological conditions: {dataWeather.weather[0].description}</p>
+                    <ul className='weatherList mt-4 pb-5'>
                         <li>Humidity: {dataWeather.main.humidity}%</li>
-                        <li className='meteorologicalConditions'>Meteorological conditions: {dataWeather.weather[0].description}</li>
-                        <li>Visibility: {dataWeather.visibility / difVisibility}km</li>
+                        <li className='mt-3'>Visibility: {dataWeather.visibility / difVisibility}km</li>
                     </ul>
-                    <img src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
+                    
                 </div>
             )
         }
