@@ -7,6 +7,7 @@ export const WeatherApp = () => {
     const [city, setCity] = useState('')
     const [dataWeather, setDataWeather] = useState(null)
     const [isValid, setIsValid] = useState(true)
+    const [error, setError] = useState('')
     
 
     const handleCity = (e) => {
@@ -28,13 +29,15 @@ export const WeatherApp = () => {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}
             `)
             if (!response.ok) {
-                throw new Error('La ciudad no existe');
+                throw new Error('La ciudad ingresada no es válida');
             }
             const data = await response.json()
             setDataWeather(data)
+            setError('')
         } catch (error) {
             console.error('Ocurrio el siguiente problema: ', error)
-            alert(error.message)
+            setError(error.message)
+            setDataWeather(null)
         }
     }
 
@@ -48,7 +51,10 @@ export const WeatherApp = () => {
             onChange={handleCity}
             />
             <button type='submit'>Buscar</button>
-        </form>
+           </form>
+           {
+            error && <div className='messageError'> {error} </div>
+           }
         {
             dataWeather && (
                 <div>
