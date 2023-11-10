@@ -35,7 +35,7 @@ export const WeatherApp = () => {
     //Llamado a la api para obtener los datos de temp, humedad, icono y visibilidad
     const fetchWeather = async () => {
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=es&units=metric&appid=${API_KEY}
             `)
             if (!response.ok) {
                 throw new Error('La ciudad ingresada no es válida');
@@ -55,7 +55,7 @@ export const WeatherApp = () => {
     // datos para conseguir el pronóstico extendido de 5 días
     const fetchLatLong = async () => {
         try {
-            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=${API_KEY}`)
+            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&lang=es&appid=${API_KEY}`)
             const data = await response.json()
             setLatLong(data)
         } catch (error){
@@ -69,7 +69,7 @@ export const WeatherApp = () => {
     const longitud = latLong[0].lon
     const fetchPronosticoExtendido = async () => {
         try{
-            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latitud}&lon=${longitud}&units=metric&cnt=5&appid=${API_KEY}`)
+            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latitud}&lon=${longitud}&lang=es&units=metric&cnt=5&appid=${API_KEY}`)
             const data = await response.json()
             setextendido(data)
         }catch (error){
@@ -151,25 +151,34 @@ export const WeatherApp = () => {
             )
         }
         </div>
+        
         <div className='container'>
             {prox5Dias.map((item, index) => {
             const tempMax = item.main.temp_max;
             const tempMin = item.main.temp_min;
-            const dia = new Date(item.dt * 1000).toLocaleDateString();
+            const fecha = new Date(item.dt * 1000).toLocaleDateString();
             const humedad = item.main.humidity;
             const visibilidad = item.visibility;
-            const descripcion = item.weather[0].description;
-            const icono = item.weather[0].icon;
-            const urlIcono = `http://openweathermap.org/img/w/${icono}.png`;
+           
+            const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
+            const weatherIconDescription = item.weather && item.weather.length > 0 ? item.weather[0].description : '';
+        
+            
 
-            return(
+           return(
+            
             <div key={index}>
-                <h1>{dia}</h1>
-                <img src={urlIcono} alt="Imagen del clima del día" />
+                <h1>{fecha}</h1>
+                <img
+                    src={`http://openweathermap.org/img/w/${weatherIcon}.png`}
+                    alt={weatherIconDescription}
+                />
+                <p>Condición meteorológica: {weatherIconDescription}</p>
                 <h2>{tempMin}/{tempMax}</h2>
                 <p>Humidity:{humedad}</p>
                 <p>visibility:{visibilidad}</p>
-                <p>{descripcion}</p>
+                
+                
                 
             </div>)
     })}
