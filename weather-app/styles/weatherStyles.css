@@ -22,6 +22,19 @@ body {
     
   }
 
+  .containerExtendido{
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardExtendido{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    width: 500px;
+  }
+
   .inputError{
     border: 2px solid red;
 }
@@ -88,6 +101,7 @@ body {
     justify-content: center;
   }
 
+
   h2 {
     font-size: 30px;
     font-weight: bold;
@@ -100,6 +114,20 @@ body {
     font-weight: bolder;
     margin-top: 20px;
   }
+
+
+  .temperatureExtendido{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+  .estiloTempMin{
+    color: #0056b3;
+  }
+  .estiloTempMax{
+    color: red;
+  }
+
   .meteorologicalConditions{
     text-transform: capitalize;
     font-weight: bold;
@@ -117,7 +145,17 @@ body {
     
   }
 
+  .iconWeatherExtendido{
+    width: 70px;
+  }
+
   .subIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .subIconExtendido{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,6 +201,15 @@ body {
     img {
       width: 40px;
       height: 40px;
+    }
+
+    .containerExtendido{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .cardExtendido{
+      margin-bottom: 10px
     }
   }
   

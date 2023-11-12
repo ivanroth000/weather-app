@@ -1,19 +1,20 @@
 import React, { useRef } from 'react'
 import { useState,} from 'react'
 import { useEffect } from 'react'
+import { PronosticoExt } from './PronosticoExt'
 
 export const WeatherApp = () => {
 
     const API_KEY = '49fac957264482c16f59408174700d7c'
+    
     const countryCode = 'ISO 3166'
-    const difKelvin = 273.15
     const [city, setCity] = useState('')
     const [dataWeather, setDataWeather] = useState(null)
     const [isValid, setIsValid] = useState(true)
     const [error, setError] = useState('')
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
-    const [extendido, setextendido] = useState({ list: [{ main: { temp_max: 0, temp_min: 0 } }] });
-    
+    const [extendido, setExtendido] = useState({ list: [{ main: { temp_max: 0, temp_min: 0 } }] });
+   
     
     const difVisibility = 1000
 
@@ -21,17 +22,40 @@ export const WeatherApp = () => {
         setCity(e.target.value)
     }
 
+    /*
+    const handleOnsubmit = async (e) => {
+        e.preventDefault();
+        if (city.length > 0) {
+            setIsValid(true);
+            
+            // Primero, obtenemos el clima y las coordenadas de la ciudad
+            const weatherFetched = await fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong);
+            const latLongFetched = await fetchLatLong(city, countryCode);
+    
+            // Si ambas funciones son exitosas, entonces obtenemos el pronóstico extendido
+           
+            fetchPronosticoExtendido(latLong[0].lat, latLong[0].lon, setExtendido);
+            
+        } else {
+            setIsValid(false);
+        }
+    }
+    */
+
     const handleOnsubmit = (e) => {
         e.preventDefault()
         if (city.length > 0){
             setIsValid(true)
-            fetchWeather()
-            fetchLatLong()
-            fetchPronosticoExtendido()
+            
+             if((fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong)) && (fetchLatLong(city, countryCode))){
+             
+             fetchPronosticoExtendido(latLong[0].lat, latLong[0].lon, setExtendido)
+             }
         }else{
             setIsValid(false)
         }
     }
+    
     //Llamado a la api para obtener los datos de temp, humedad, icono y visibilidad
     const fetchWeather = async () => {
         try {
@@ -50,10 +74,8 @@ export const WeatherApp = () => {
             setDataWeather(null)
         }
     }
-
-    // Llamado a la api para obtener la longitud y latitud de una ciudad y usar esos
-    // datos para conseguir el pronóstico extendido de 5 días
-    const fetchLatLong = async () => {
+    
+    const fetchLatLong = async (city, countryCode) => {
         try {
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&lang=es&appid=${API_KEY}`)
             const data = await response.json()
@@ -61,17 +83,14 @@ export const WeatherApp = () => {
         } catch (error){
             console.error('Ocurrió un error: ', error)
         }
-    }
-    
-    // Llamado a la api para hacer un pronostico extendido de los proximos 5 días
-    
-    const latitud = latLong[0].lat
-    const longitud = latLong[0].lon
-    const fetchPronosticoExtendido = async () => {
-        try{
-            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latitud}&lon=${longitud}&lang=es&units=metric&cnt=5&appid=${API_KEY}`)
+        }
+
+
+         const fetchPronosticoExtendido = async ( ) => {
+            try{
+            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0].lat}&lon=${latLong[0].lon}&lang=es&units=metric&cnt=5&appid=${API_KEY}`)
             const data = await response.json()
-            setextendido(data)
+            setExtendido(data)
         }catch (error){
             console.error('Ha ocurrido un error: ', error)
         }
@@ -99,7 +118,7 @@ export const WeatherApp = () => {
       inputRef.current.focus()
     }, [])
 
-    const prox5Dias = extendido.list.filter((item, index) => index < 40)
+   
     
     
 
@@ -151,38 +170,17 @@ export const WeatherApp = () => {
             )
         }
         </div>
+        <PronosticoExt  difVisibility={difVisibility}
+                        extendido={extendido}
+                        fetchLatLong={fetchLatLong}
+                        fetchPronosticoExtendido={fetchPronosticoExtendido}
+                        city={city}
+                        setExtendido={setExtendido}
+                        countryCode={countryCode}>
+                        
+        </PronosticoExt>
         
-        <div className='container'>
-            {prox5Dias.map((item, index) => {
-            const tempMax = item.main.temp_max;
-            const tempMin = item.main.temp_min;
-            const fecha = new Date(item.dt * 1000).toLocaleDateString();
-            const humedad = item.main.humidity;
-            const visibilidad = item.visibility;
-           
-            const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
-            const weatherIconDescription = item.weather && item.weather.length > 0 ? item.weather[0].description : '';
         
-            
-
-           return(
-            
-            <div key={index}>
-                <h1>{fecha}</h1>
-                <img
-                    src={`http://openweathermap.org/img/w/${weatherIcon}.png`}
-                    alt={weatherIconDescription}
-                />
-                <p>Condición meteorológica: {weatherIconDescription}</p>
-                <h2>{tempMin}/{tempMax}</h2>
-                <p>Humidity:{humedad}</p>
-                <p>visibility:{visibilidad}</p>
-                
-                
-                
-            </div>)
-    })}
-        </div>
     </>
   )
 }
