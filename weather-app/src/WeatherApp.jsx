@@ -153,16 +153,16 @@ export const WeatherApp = () => {
                     </div>
                     <div className='subIcon'>
                         <img className='iconCondicion me-2' src="../img/condicion-climatica.png" alt="" />
-                    <p className='meteorologicalConditions mt-3'>Meteorological conditions: {dataWeather.weather[0].description}</p>
+                    <p className='meteorologicalConditions mt-3'>Condición Meteorológica: {dataWeather.weather[0].description}</p>
                     </div>
                     <ul className='weatherList mt-4 pb-5'>
                         <div className='subIcon'>
                             <img className='iconHumedad me-2' src="../img/humedad.png" alt="" />
-                        <li>Humidity: {dataWeather.main.humidity}%</li>
+                        <li>Humedad: {dataWeather.main.humidity}%</li>
                         </div>
                         <div className='subIcon'>
                         <img className='iconVisibility  me-2' src="../img/visibilidad.png" alt="" />
-                        <li className='mt-3'>Visibility: {dataWeather.visibility / difVisibility}km</li>
+                        <li className='mt-3'>Visibilidad: {dataWeather.visibility / difVisibility}km</li>
                         </div>
                     </ul>
                     
