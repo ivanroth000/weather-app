@@ -31,12 +31,11 @@ import { useState, useEffect} from 'react'
     
     
     
-    const prox5Dias = extendido.list.filter((item, index) => index < 40)
- 
-
     
-  return (
-    <>
+    const prox5Dias = extendido.list.filter((item, index) => index < 40)
+    
+    return (
+      <>
         <div className='container containerExtendido'>
             {prox5Dias.map((item, index) => {
             const tempMax = item.main.temp_max;
@@ -52,7 +51,7 @@ import { useState, useEffect} from 'react'
 
            return(
             
-            <div className='container mx-2 cardExtendido' key={index}>
+            <div className={`container mx-2 cardExtendido cardExtendido-${index}`} key={index}>
                 <h1>{fecha}</h1>
               <div className='cityIcon'>
                 <img className='iconWeatherExtendido'
@@ -65,7 +64,7 @@ import { useState, useEffect} from 'react'
                     </p>
                     
               </div>
-                <p>Condición meteorológica: {weatherDescription}</p>
+                <p className='meteorologicalConditionsExtendido'>Condición meteorológica: {weatherDescription}</p>
                 <div className='subIconExtendido'>
                             <img className='iconHumedad me-2' src="../img/humedad.png" alt="" />
                           <p className='mt-2'>Humedad: {humedad}%</p>

@@ -132,6 +132,10 @@ body {
     text-transform: capitalize;
     font-weight: bold;
   }
+  .meteorologicalConditionsExtendido{
+    text-transform: capitalize;
+    font-weight: bold;
+  }
   
   .earthIcon{
     width: 70px;
@@ -203,13 +207,95 @@ body {
       height: 40px;
     }
 
-    .containerExtendido{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .cardExtendido{
-      margin-bottom: 10px
-    }
   }
   
+  @media (max-width: 1250px){
+    .containerExtendido{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: 
+      'card0 card1'
+      'card2 card3'
+      'card4 none';
+      row-gap: 15px;
+      column-gap: 7px;
+    }
+
+    .cardExtendido-0{
+      margin: 0;
+      grid-area: card0;
+    }
+    .cardExtendido-1{
+      margin: 0;
+      grid-area: card1;
+    }
+    .cardExtendido-2{
+      margin: 0;
+      grid-area: card2;
+    }
+    .cardExtendido-3{
+      margin: 0;
+      grid-area: card3;
+    }
+    .cardExtendido-4{
+      margin: 0;
+      grid-area: card4;
+    }
+
+    .cardExtendido{
+      width: 350px;
+      padding-top: 25px;
+    }
+  }
+
+  @media (max-width: 767px){
+    .containerExtendido{
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      grid-template-areas: 
+      'card0' 'card1'
+      'card2' 'card3'
+      'card4';
+      row-gap: 15px;
+      place-items: center;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 603px){
+    .earthIcon{
+      width: 55px;
+      height: 55px;
+    }
+    .iconCondicion{
+      width: 30px;
+      height: 30px;
+    }
+    .iconHumedad{
+      width: 30px;
+      height: 30px;
+    }
+    .iconVisibility{
+      width: 30px;
+      height: 30px;
+    }
+    .iconWeatherExtendido{
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+  @media (max-width: 320px){
+    .cardExtendido{
+      width: 300px;
+    }
+    .iconCondicion{
+      width: 30px;
+      margin-left: 8px;
+      margin-bottom: 15px;
+    }
+    .meteorologicalConditions{
+      margin-right: 10px;
+    }
+  }
