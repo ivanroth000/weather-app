@@ -32,18 +32,50 @@ import { useState, useEffect} from 'react'
     
     
     
-    const prox5Dias = extendido.list.filter((item, index) => index < 40)
+    //const prox5Dias = extendido.list.filter((item, index) => index < 40)
+    /*let fechaActual = new Date().toLocaleDateString();
+    let fechaGuardada = '';
+    const prox5Dias = extendido.list.filter((item) => {
+      const fecha = new Date(item.dt * 1000).toLocaleDateString();
+      if (fecha !== fechaGuardada && fechaActual) {
+        fechaGuardada = fecha;
+        return true;
+      }
+      return false;
+    });
+    */
+    let fechaActual = new Date();
+    fechaActual = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), fechaActual.getDate());
+    let fechaGuardada = '';
+    const prox5Dias = extendido.list.filter((item) => {
+      let fecha = new Date(item.dt * 1000);
+      fecha = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
+
+    
+      // Verificar si la fecha es posterior a la fecha actual
+      if (fecha > fechaActual) {
+        const fechaFormateada = fecha.toLocaleDateString();
+    
+        // Verificar si la fecha es diferente de la fecha guardada
+        if (fechaFormateada !== fechaGuardada) {
+          fechaGuardada = fechaFormateada;
+          return true;
+        }
+      }
+    
+      return false;
+    });
+    
     
     return (
       <>
-        <div className='container containerExtendido'>
+        <div className='mx-4  containerExtendido'>
             {prox5Dias.map((item, index) => {
             const tempMax = item.main.temp_max;
             const tempMin = item.main.temp_min;
             const fecha = new Date(item.dt * 1000).toLocaleDateString();
             const humedad = item.main.humidity;
             const visibilidad = item.visibility;
-           
             const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
             const weatherDescription = item.weather && item.weather.length > 0 ? item.weather[0].description : '';
         
@@ -51,7 +83,7 @@ import { useState, useEffect} from 'react'
 
            return(
             
-            <div className={`container mx-2 cardExtendido cardExtendido-${index}`} key={index}>
+            <div className={`container mx-2 pt-5 cardExtendido cardExtendido-${index}`} key={index}>
                 <h1>{fecha}</h1>
               <div className='cityIcon'>
                 <img className='iconWeatherExtendido'

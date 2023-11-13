@@ -24,15 +24,16 @@ body {
 
   .containerExtendido{
     display: flex;
-    border-radius: 10px;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    margin-bottom: 50px;
   }
 
   .cardExtendido{
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-    width: 500px;
+    width: 400px;
   }
 
   .inputError{
@@ -180,66 +181,36 @@ body {
   }
   
 
-  /* Estilos para móviles */
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 20px;
-    }
+  /* Estilos para responsive */
   
-    input[type="text"] {
-      font-size: 14px;
-    }
-  
-    button {
-      padding: 8px 16px;
-    }
-  
-    h2 {
-      font-size: 18px;
-    }
-  
-    p {
-      font-size: 14px;
-    }
-  
-    img {
-      width: 40px;
-      height: 40px;
-    }
-
-  }
-  
-  @media (max-width: 1250px){
+  @media (max-width: 1247px){
     .containerExtendido{
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-areas: 
-      'card0 card1'
-      'card2 card3'
-      'card4 none';
-      row-gap: 15px;
-      column-gap: 7px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas:
+      'card0 card1 card2'
+      'card3 card4 none';
+      place-items: center;
+      row-gap: 20px;
     }
+    
 
     .cardExtendido-0{
-      margin: 0;
       grid-area: card0;
     }
     .cardExtendido-1{
-      margin: 0;
       grid-area: card1;
     }
     .cardExtendido-2{
-      margin: 0;
       grid-area: card2;
     }
     .cardExtendido-3{
-      margin: 0;
+      
       grid-area: card3;
     }
     .cardExtendido-4{
-      margin: 0;
+      
       grid-area: card4;
     }
 
@@ -248,6 +219,24 @@ body {
       padding-top: 25px;
     }
   }
+ 
+  @media (max-width: 1130px){
+    .containerExtendido{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: 
+      'card0 card1'
+      'card2 card3'
+      'card4 none' ;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .cardExtendido{
+      width: 350px;
+      padding-top: 25px;      
+    }
+}
 
   @media (max-width: 767px){
     .containerExtendido{

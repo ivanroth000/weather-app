@@ -88,7 +88,7 @@ export const WeatherApp = () => {
 
          const fetchPronosticoExtendido = async ( ) => {
             try{
-            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0].lat}&lon=${latLong[0].lon}&lang=es&units=metric&cnt=5&appid=${API_KEY}`)
+            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0].lat}&lon=${latLong[0].lon}&lang=es&units=metric&cnt=35&appid=${API_KEY}`)
             const data = await response.json()
             setExtendido(data)
         }catch (error){
