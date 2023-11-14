@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useState,} from 'react'
 import { useEffect } from 'react'
 import { PronosticoExt } from './PronosticoExt'
+import { Mapas } from './Mapas'
 
 export const WeatherApp = () => {
 
@@ -14,6 +15,7 @@ export const WeatherApp = () => {
     const [error, setError] = useState('')
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
     const [extendido, setExtendido] = useState({ list: [{ main: { temp_max: 0, temp_min: 0 } }] });
+    
    
     
     const difVisibility = 1000
@@ -129,7 +131,7 @@ export const WeatherApp = () => {
       
       <img className='earthIcon' src="../img/clima.png" alt="" />
      
-        <form onSubmit={handleOnsubmit}>
+        <form  onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
             type="text" 
             value={city}
@@ -143,6 +145,8 @@ export const WeatherApp = () => {
            }
         {
             dataWeather && (
+                <>
+                <div className='weatherMapa'>
                 <div className='cardWeather'>
                     <h2>
                         {dataWeather.name} 
@@ -165,10 +169,25 @@ export const WeatherApp = () => {
                         <li className='mt-3'>Visibilidad: {dataWeather.visibility / difVisibility}km</li>
                         </div>
                     </ul>
-                    
                 </div>
+                <div className='mapa'>
+            <Mapas
+                API_KEY={API_KEY}
+                city={city}
+                countryCode={countryCode}
+                latLong={latLong}
+                handleOnsubmit={handleOnsubmit}
+                fetchLatLong={fetchLatLong}
+            />
+                </div>
+        </div>
+            </>
+                
+               
+               
             )
         }
+        
         </div>
         <PronosticoExt  difVisibility={difVisibility}
                         extendido={extendido}

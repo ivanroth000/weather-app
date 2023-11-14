@@ -1,5 +1,4 @@
 
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,19 +6,34 @@ body {
     text-align: center;
     background: #71b1e9;
   }
+  .weatherMapa {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
+  .mapaImg{
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+    margin-top: 45px;
+  }
+  
   .logo{
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
+
   .cardWeather{
+    display: block;
     background: #9fcdf1;
     padding-top:1px;
     border-radius: 10px;
     margin-top: 45px;
-    
+    width: 500px;
+    height: 400px;
   }
 
   .containerExtendido{
@@ -48,8 +62,6 @@ body {
  }
 
   .container {
-    
-    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -64,11 +76,14 @@ body {
     display: flex;
     margin-bottom: 20px;
     margin-top: 40px;
+    justify-content: center;
   }
   
   
 
   input{
+    max-width: 600px;
+    display: block;
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
