@@ -18,6 +18,8 @@ body {
     border-radius: 10px;
     margin-top: 45px;
   }
+
+
   
   .logo{
     display: flex;
@@ -41,6 +43,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    margin-top: 20px;
     margin-bottom: 50px;
   }
 
@@ -234,6 +237,19 @@ body {
     }
   }
  
+  @media (max-width: 1202px){
+    .weatherMapa{
+      display: block;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cardWeather{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
   @media (max-width: 1130px){
     .containerExtendido{
       grid-template-columns: repeat(2, 1fr);
@@ -289,6 +305,46 @@ body {
     }
   }
 
+  @media (max-width: 545px){
+
+    .mapaImg{
+      width: 400px;
+    }
+    .cardWeather{
+      width: 400px;
+    }
+  }
+
+  @media (max-width: 441px){
+
+    .mapaImg{
+      width: 350px;
+    }
+    .cardWeather{
+      width: 350px;
+    }
+  }
+
+  @media (max-width: 388px){
+
+    .mapaImg{
+      width: 300px;
+    }
+    .cardWeather{
+      width: 300px;
+    }
+
+    .iconCondicion{
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
+
+    form{
+      padding-left: 10px;
+    }
+
+  }
+
   @media (max-width: 320px){
     .cardExtendido{
       width: 300px;
@@ -300,5 +356,24 @@ body {
     }
     .meteorologicalConditions{
       margin-right: 10px;
+    }
+
+    .mapaImg{
+      width: 270px;
+    }
+    .cardWeather{
+      width: 270px;
+    }
+
+    .iconCondicion{
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
+
+    form{
+      margin-left: 10px;
+    }
+    button{
+      margin-right: 17px;
     }
   }
