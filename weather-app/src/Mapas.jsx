@@ -7,7 +7,6 @@ export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => 
     const [mapa, setMapa] = useState(null)
     const layer = 'temp_new'
     const z = 2
-    
 
     useEffect(() => {
         if(latLong && latLong.length > 0){

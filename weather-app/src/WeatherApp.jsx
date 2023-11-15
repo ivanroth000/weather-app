@@ -182,22 +182,20 @@ export const WeatherApp = () => {
                 </div>
         </div>
             </>
-                
-               
-               
             )
         }
         
-        </div>
-        <PronosticoExt  difVisibility={difVisibility}
-                        extendido={extendido}
-                        fetchLatLong={fetchLatLong}
-                        fetchPronosticoExtendido={fetchPronosticoExtendido}
-                        city={city}
-                        setExtendido={setExtendido}
-                        countryCode={countryCode}>
-                        
-        </PronosticoExt>
+        </div>{!error && (
+        <PronosticoExt
+          difVisibility={difVisibility}
+          extendido={extendido}
+          fetchLatLong={fetchLatLong}
+          fetchPronosticoExtendido={fetchPronosticoExtendido}
+          city={city}
+          setExtendido={setExtendido}
+          countryCode={countryCode}
+        />
+      )}
         
         
     </>

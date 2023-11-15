@@ -82,14 +82,13 @@ import { useState, useEffect} from 'react'
             
 
            return(
-            
             <div className={`container mx-2 pt-5 cardExtendido cardExtendido-${index}`} key={index}>
                 <h1>{fecha}</h1>
               <div className='cityIcon'>
                 <img className='iconWeatherExtendido'
                     src={`http://openweathermap.org/img/w/${weatherIcon}.png`}
                     alt={weatherDescription}
-                  />
+                    />
                     <p className='temperatureExtendido mt-2'>
                       <span className='estiloTempMin'>{tempMin}ºC</span>/
                       <span className='estiloTempMax'>{tempMax}ºC</span>
@@ -105,11 +104,11 @@ import { useState, useEffect} from 'react'
                   <img className='iconVisibility  mb-3' src="../img/visibilidad.png" alt="" />
                   <p className='mt-3 ms-2'>Visibilidad: {visibilidad / difVisibility}km</p>
                 </div>
-                
+              
                 
             </div>)
-    })}
+          })}
         </div>
     </>
-  )
-}
+    )
+  }
