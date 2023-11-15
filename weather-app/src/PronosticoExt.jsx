@@ -78,6 +78,8 @@ import { useState, useEffect} from 'react'
             const visibilidad = item.visibility;
             const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
             const weatherDescription = item.weather && item.weather.length > 0 ? item.weather[0].description : '';
+            
+
         
             
 

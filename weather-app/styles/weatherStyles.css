@@ -4,7 +4,12 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background: #71b1e9;
+    background:#71b1e9;
+  }
+  .spinner{
+    width: 700px;
+    color: rgb(0, 0, 0);
+    border: 7px solid #000000;
   }
   .weatherMapa {
     display: flex;

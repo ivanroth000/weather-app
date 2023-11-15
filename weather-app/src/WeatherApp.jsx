@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { PronosticoExt } from './PronosticoExt'
 import { Mapas } from './Mapas'
 
+
 export const WeatherApp = () => {
 
     const API_KEY = '49fac957264482c16f59408174700d7c'
