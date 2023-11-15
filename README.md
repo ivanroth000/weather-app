@@ -21,27 +21,27 @@ Comencé con lo básico: un form, un input y un button para que el usuario busqu
 entrada para que si o si tenga que haber algo escrito en el input. 
 
 ## Input
-![image](https://github.com/ivanroth000/weather-app/blob/master/img-ReadMe/input.png)
-[<img src="../img-ReadMe/input.png" alt="input de la app del tiempo">]
+
+<img src="weather-app/img-ReadMe/input.png" alt="input de la app del tiempo">
 
 ## Validación del input
 
-[<img src="img-ReadMe/validacion-input.png" alt=" validación del input de la app del tiempo">]
+<img src="weather-app/img-ReadMe/validacion-input.png" alt="validación del input">
 
 El siguiente paso era llamar a la API de Open Weather Map para mostrar la información de la ciudad ingresada.
 Esta fue la que use:
 
-[<img src="img-ReadMe/api.png" alt="página de la api de open weather map">]
+<img src="weather-app/img-ReadMe/api.png" alt="API de open weather map">
 
 En este punto fue cuando ocurrió el primer problema, y es que para obtener los datos del tiempo de una ciudad con esa API primero necesitaba obtener las
 coordenadas de la ciudad ingresada. Por lo tanto para usar esa API primero tenia que usar otra de geolocalización:
 
-[<img src="img-ReadMe/geo-localizacion.png" alt="página de la api de geo localización de open weather map">]
+<img src="weather-app/img-ReadMe/geo-localizacion.png" alt="API de geolocalizacion">
 
 Una vez que ya tenia las coordenadas podía acceder a los datos del tiempo de la ciudad que ingresaba el usuario, le agregué estilos y algunos iconos para
 mejorar el diseño de la app y quedó asi:
 
-[<img src="img-ReadMe/ciudad-tiempo.png" alt="datos del tiempo de la ciudad">]
+<img src="weather-app/img-ReadMe/ciudad-tiempo.png" alt="pronóstico del tiempo">
 
 Al principio pensé: "Listo, ya está, quedó bien." Pero luego me pareció que había quedado algo simple y quería hacer algo más desafiante y complejo. Por lo que
 me base en otras páginas del tiempo y se me ocurrió agregar el pronostico extendido con los próximos 5 días.
@@ -54,16 +54,16 @@ de la API y de algún que otro blog que encontré, ya que la documentación de e
 
 Una vez resuelto el problema quedó así:
 
-[<img src="img-ReadMe/extendido.png" alt="datos del pronóstico extendido de la ciudad">]
+<img src="weather-app/img-ReadMe/extendido.png" alt="pronóstico extendido">
 
 Por último, leí que Open Weather Map tenía una API sobre distintos mapas a nivel mundial que mostraban la temperatura, el nivel del mar, el viento, las precipitaciones
 y las nuubes:
 
-[<img src="img-ReadMe/mapa1.png" alt="mapas de open weather map">]
+<img src="weather-app/img-ReadMe/mapa1.png" alt="mapa de open weather map">
 
-[<img src="img-ReadMe/mapa2.png" alt="mapas de open weather map">]
+<img src="weather-app/img-ReadMe/mapa2.png" alt="mapa de open weather map">
 
-[<img src="img-ReadMe/mapa3.png" alt="mapas de open weather map">]
+<img src="weather-app/img-ReadMe/mapa3.png" alt="mapa de open weather map">
 
 Yo me decidí por obtener el mapa sobre la temperatura, la idea era que el mapa muestre la zona de la ciudad que ingresaba el usuario en el input. Sin embargo, tuve más
 complicaciones de las esperadas.
@@ -84,7 +84,7 @@ const y = Math.floor((1 - Math.asinh(Math.tan(latRad)) / Math.PI) / 2 * n);
 ```
 Y este fue el resultado final del mapa en mi app:
 
-[<img src="img-ReadMe/mapa4.png" alt="mapas de open weather map">]
+<img src="weather-app/img-ReadMe/mapa4.png" alt="mapa de open weather map">
 
 Tengo que aclarar que el mapa no tiene la mejor resolución ya que es de la API gratuita de la página y la versión 1.0. Hay uno de mejor calidad y más completo en las versión
 2.0 pero hay que estar suscripto.
@@ -93,12 +93,12 @@ Por último, hice que la aplicación sea responsive a través de los @media con 
 
 # Lenguajes y tecnologías usados
 
-[<img src="img-ReadMe/icono-react.svg" alt="icono de react">]
-[<img src="img-ReadMe/img-css.svg" alt="icono de react">]
-[<img src="img-ReadMe/img-html5.svg" alt="icono de react">]
-[<img src="img-ReadMe/icono-bt.svg" alt="icono de react">]
-[<img src="img-ReadMe/git-logo-final.svg" alt="icono de react">]
-[<img src="img-ReadMe/github-logo-final.svg" alt="icono de react">]
+<img src="weather-app/img-ReadMe/icono-react.svg" alt="icono de react">
+<img src="weather-app/img-ReadMe/img-css.svg" alt="icono de css">
+<img src="weather-app/img-ReadMe/img-html5.svg" alt="icono de html">
+<img src="weather-app/img-ReadMe/img-bt.svg" alt="icono de bootstrap">
+<img src="weather-app/img-ReadMe/git-logo-final.svg" alt="icono de git">
+<img src="weather-app/img-ReadMe/github-logo-final.svg" alt="icono de github">
 
 ## Links
 
