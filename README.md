@@ -102,10 +102,10 @@ Por último, hice que la aplicación sea responsive a través de los @media con 
 
 ## Links
 
-Link del deployment de Github pages:
-*link*
+Link del deployment de Vercel:
+https://weather-app-ivanroth000.vercel.app/
 
-Link de mi dominio en vercel:
+Link de mi dominio de Github pages:
 *link*
 
 
