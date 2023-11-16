@@ -93,8 +93,7 @@ Por último, hice que la aplicación sea responsive a través de los @media con 
 
 # Lenguajes y tecnologías usados
 
-<img src="img-ReadMe/icono-react.svg" alt="icono de react">
-<img src="img-ReadMe/img-css.svg" alt="icono de css">
+<img src="img-ReadMe/icono-react.svg" alt="icono de react"> <img src="img-ReadMe/img-css.svg" alt="icono de css">
 <img src="img-ReadMe/img-html5.svg" alt="icono de html">
 <img src="img-ReadMe/img-bt.svg" alt="icono de bootstrap">
 <img src="img-ReadMe/git-logo-final.svg" alt="icono de git">
@@ -104,10 +103,6 @@ Por último, hice que la aplicación sea responsive a través de los @media con 
 
 Link del deployment de Vercel:
 https://weather-app-ivanroth000.vercel.app/
-
-Link de mi dominio de Github pages:
-*link*
-
 
 Muchas gracias por leer 😊.
 
