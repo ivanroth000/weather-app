@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react'
+import imagenes from './assets/imagenes';
 
 
 
@@ -99,11 +100,11 @@ import { useState, useEffect} from 'react'
               </div>
                 <p className='meteorologicalConditionsExtendido'>Condición meteorológica: {weatherDescription}</p>
                 <div className='subIconExtendido'>
-                            <img className='iconHumedad me-2' src="../img/humedad.png" alt="" />
+                            <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
                           <p className='mt-2'>Humedad: {humedad}%</p>
                 </div>
                 <div className='subIconExtendido'>
-                  <img className='iconVisibility  mb-3' src="../img/visibilidad.png" alt="" />
+                  <img className='iconVisibility  mb-3' src={imagenes.img5} alt="Visibilidad" />
                   <p className='mt-3 ms-2'>Visibilidad: {visibilidad / difVisibility}km</p>
                 </div>
               

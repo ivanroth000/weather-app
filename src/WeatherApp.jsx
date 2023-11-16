@@ -3,6 +3,7 @@ import { useState,} from 'react'
 import { useEffect } from 'react'
 import { PronosticoExt } from './PronosticoExt'
 import { Mapas } from './Mapas'
+import imagenes from './assets/imagenes'
 
 
 export const WeatherApp = () => {
@@ -130,7 +131,7 @@ export const WeatherApp = () => {
         
       <h1>Aplicación del Clima</h1>
       
-      <img className='earthIcon' src="img/clima.png" alt="" />
+      <img className='earthIcon' src={imagenes.img2} alt="Logo de la tierra con las condiciones climáticas" />
      
         <form  onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
@@ -157,16 +158,16 @@ export const WeatherApp = () => {
                     <p className='temperature'>{dataWeather?.main?.temp} ºC</p>
                     </div>
                     <div className='subIcon'>
-                        <img className='iconCondicion me-2' src="../img/condicion-climatica.png" alt="" />
+                        <img className='iconCondicion me-2' src={imagenes.img3} alt="Condición climática" />
                     <p className='meteorologicalConditions mt-3'>Condición Meteorológica: {dataWeather.weather[0].description}</p>
                     </div>
                     <ul className='weatherList mt-4 pb-5'>
                         <div className='subIcon'>
-                            <img className='iconHumedad me-2' src="../img/humedad.png" alt="" />
+                            <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
                         <li>Humedad: {dataWeather.main.humidity}%</li>
                         </div>
                         <div className='subIcon'>
-                        <img className='iconVisibility  me-2' src="../img/visibilidad.png" alt="" />
+                        <img className='iconVisibility  me-2' src={imagenes.img5} alt="Visibilidad" />
                         <li className='mt-3'>Visibilidad: {dataWeather.visibility / difVisibility}km</li>
                         </div>
                     </ul>
