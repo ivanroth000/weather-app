@@ -130,7 +130,7 @@ export const WeatherApp = () => {
         
       <h1>Aplicación del Clima</h1>
       
-      <img className='earthIcon' src="../img/clima.png" alt="" />
+      <img className='earthIcon' src="img/clima.png" alt="" />
      
         <form  onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
