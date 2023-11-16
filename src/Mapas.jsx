@@ -14,6 +14,8 @@ export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => 
     useEffect(() => {
       setTimeout(() => {
         if(latLong && latLong.length > 0){
+                    //Pasa las coordenadas de latitud y longitud a coordenadas mosaico
+                    //que son necesarias para mostrar el mapa
                     const latRad = Math.PI *latLong[0].lat / 180;
                     const n = Math.pow(2, z);
                     const x = Math.floor((latLong[0].lon + 180) / 360 * n);
@@ -30,16 +32,15 @@ export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => 
   return (
     <>
     {cargando ? (
-       <ClipLoader className='spinner'
-       aria-label="Loading Spinner"
-       data-testid="loader"
-     />
-   ) : (
-
-        mapa && <img className='mapaImg' src={mapa} alt="Mapa de temperatura" />
-      )  
+       <ClipLoader 
+          className='spinner'
+          aria-label="Loading Spinner"
+          data-testid="loader"
+      />
+      ):(
+          mapa && <img className='mapaImg' src={mapa} alt="Mapa de temperatura" />
+        )  
     }
-        
     </>
   )
 }

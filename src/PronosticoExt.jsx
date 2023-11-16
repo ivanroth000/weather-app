@@ -8,14 +8,12 @@ import imagenes from './assets/imagenes';
     
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
     
+    //Con los valores de latitud y longitud devuelve el pronóstico extendido
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Llama a fetchLatLong para obtener datos y actualizar el estado
                 const latLongData = await fetchLatLong(city, countryCode);
                 setLatLong(latLongData);
-        
-                // Asegúrate de que latLong se haya actualizado antes de llamar a fetchPronosticoExtendido
                 if (latLongData && latLongData.length > 0) {
                   fetchPronosticoExtendido(latLongData[0].lat, latLongData[0].lon, setExtendido);
                 }
@@ -30,21 +28,7 @@ import imagenes from './assets/imagenes';
     
     const API_KEY = '49fac957264482c16f59408174700d7c'
     
-    
-    
-    
-    //const prox5Dias = extendido.list.filter((item, index) => index < 40)
-    /*let fechaActual = new Date().toLocaleDateString();
-    let fechaGuardada = '';
-    const prox5Dias = extendido.list.filter((item) => {
-      const fecha = new Date(item.dt * 1000).toLocaleDateString();
-      if (fecha !== fechaGuardada && fechaActual) {
-        fechaGuardada = fecha;
-        return true;
-      }
-      return false;
-    });
-    */
+    //Solo devuelve los próximos 5 días
     let fechaActual = new Date();
     fechaActual = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), fechaActual.getDate());
     let fechaGuardada = '';
@@ -52,18 +36,14 @@ import imagenes from './assets/imagenes';
       let fecha = new Date(item.dt * 1000);
       fecha = new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
 
-    
-      // Verificar si la fecha es posterior a la fecha actual
+      //Hace que no devuelve de nuevo la fecha actual en el pronóstico extendido
       if (fecha > fechaActual) {
         const fechaFormateada = fecha.toLocaleDateString();
-    
-        // Verificar si la fecha es diferente de la fecha guardada
         if (fechaFormateada !== fechaGuardada) {
           fechaGuardada = fechaFormateada;
           return true;
         }
       }
-    
       return false;
     });
     
@@ -80,10 +60,6 @@ import imagenes from './assets/imagenes';
             const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
             const weatherDescription = item.weather && item.weather.length > 0 ? item.weather[0].description : '';
             
-
-        
-            
-
            return(
             <div className={`container mx-2 pt-5 cardExtendido cardExtendido-${index}`} key={index}>
                 <h1>{fecha}</h1>
@@ -96,19 +72,16 @@ import imagenes from './assets/imagenes';
                       <span className='estiloTempMin'>{tempMin}ºC</span>/
                       <span className='estiloTempMax'>{tempMax}ºC</span>
                     </p>
-                    
               </div>
                 <p className='meteorologicalConditionsExtendido'>Condición meteorológica: {weatherDescription}</p>
                 <div className='subIconExtendido'>
-                            <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
-                          <p className='mt-2'>Humedad: {humedad}%</p>
+                  <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
+                  <p className='mt-2'>Humedad: {humedad}%</p>
                 </div>
                 <div className='subIconExtendido'>
                   <img className='iconVisibility  mb-3' src={imagenes.img5} alt="Visibilidad" />
                   <p className='mt-3 ms-2'>Visibilidad: {visibilidad / difVisibility}km</p>
                 </div>
-              
-                
             </div>)
           })}
         </div>

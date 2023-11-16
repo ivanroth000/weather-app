@@ -17,35 +17,14 @@ export const WeatherApp = () => {
     const [error, setError] = useState('')
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
     const [extendido, setExtendido] = useState({ list: [{ main: { temp_max: 0, temp_min: 0 } }] });
-    
-   
-    
     const difVisibility = 1000
 
+    //Setea la ciudad
     const handleCity = (e) => {
         setCity(e.target.value)
     }
 
-    /*
-    const handleOnsubmit = async (e) => {
-        e.preventDefault();
-        if (city.length > 0) {
-            setIsValid(true);
-            
-            // Primero, obtenemos el clima y las coordenadas de la ciudad
-            const weatherFetched = await fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong);
-            const latLongFetched = await fetchLatLong(city, countryCode);
-    
-            // Si ambas funciones son exitosas, entonces obtenemos el pronóstico extendido
-           
-            fetchPronosticoExtendido(latLong[0].lat, latLong[0].lon, setExtendido);
-            
-        } else {
-            setIsValid(false);
-        }
-    }
-    */
-
+    //Maneja los fetchs y su validación
     const handleOnsubmit = (e) => {
         e.preventDefault()
         if (city.length > 0){
@@ -60,7 +39,7 @@ export const WeatherApp = () => {
         }
     }
     
-    //Llamado a la api para obtener los datos de temp, humedad, icono y visibilidad
+    //Obtiene los datos de temp, humedad, icono y visibilidad
     const fetchWeather = async () => {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=es&units=metric&appid=${API_KEY}
@@ -79,6 +58,7 @@ export const WeatherApp = () => {
         }
     }
     
+    //Obtiene la ciudad
     const fetchLatLong = async (city, countryCode) => {
         try {
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&lang=es&appid=${API_KEY}`)
@@ -87,10 +67,10 @@ export const WeatherApp = () => {
         } catch (error){
             console.error('Ocurrió un error: ', error)
         }
-        }
+    }
 
-
-         const fetchPronosticoExtendido = async ( ) => {
+    //Obtiene la latitud y longitud de la ciudad
+    const fetchPronosticoExtendido = async ( ) => {
             try{
             const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0].lat}&lon=${latLong[0].lon}&lang=es&units=metric&cnt=35&appid=${API_KEY}`)
             const data = await response.json()
@@ -99,9 +79,6 @@ export const WeatherApp = () => {
             console.error('Ha ocurrido un error: ', error)
         }
     }
-
-   
-   
 
     useEffect(() => {
         const lastCity = localStorage.getItem('lastCity');
@@ -122,16 +99,12 @@ export const WeatherApp = () => {
       inputRef.current.focus()
     }, [])
 
-   
-    
-    
-
   return (
       <> <div className='container'>
         
       <h1>Aplicación del Clima</h1>
       
-      <img className='earthIcon' src={imagenes.img2} alt="Logo de la tierra con las condiciones climáticas" />
+      <img className='earthIcon' src={imagenes.img2} alt="Logo de la tierra con las condiciones climáticas"/>
      
         <form  onSubmit={handleOnsubmit}>
             <input className={isValid ? '' : 'inputError'} placeholder='Introduce el nombre de una ciudad'
@@ -141,65 +114,64 @@ export const WeatherApp = () => {
             onChange={handleCity}
             />
             <button type='submit'>Buscar</button>
-           </form>
-           {
-            error && <div className='messageError'> {error} </div>
-           }
+        </form>
         {
-            dataWeather && (
-                <>
-                <div className='weatherMapa'>
-                <div className='cardWeather'>
-                    <h2>
-                        {dataWeather.name} 
-                    </h2>
-                    <div className='cityIcon'>
-                    <img className='iconWeather' src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
-                    <p className='temperature'>{dataWeather?.main?.temp} ºC</p>
-                    </div>
-                    <div className='subIcon'>
-                        <img className='iconCondicion me-2' src={imagenes.img3} alt="Condición climática" />
-                    <p className='meteorologicalConditions mt-3'>Condición Meteorológica: {dataWeather.weather[0].description}</p>
-                    </div>
-                    <ul className='weatherList mt-4 pb-5'>
-                        <div className='subIcon'>
-                            <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
-                        <li>Humedad: {dataWeather.main.humidity}%</li>
-                        </div>
-                        <div className='subIcon'>
-                        <img className='iconVisibility  me-2' src={imagenes.img5} alt="Visibilidad" />
-                        <li className='mt-3'>Visibilidad: {dataWeather.visibility / difVisibility}km</li>
-                        </div>
-                    </ul>
-                </div>
-                <div className='mapa'>
-            <Mapas
-                API_KEY={API_KEY}
-                city={city}
-                countryCode={countryCode}
-                latLong={latLong}
-                handleOnsubmit={handleOnsubmit}
-                fetchLatLong={fetchLatLong}
-            />
-                </div>
-        </div>
-            </>
-            )
+            error && <div className='messageError'> {error} </div>
         }
         
-        </div>{!error && (
-        <PronosticoExt
-          difVisibility={difVisibility}
-          extendido={extendido}
-          fetchLatLong={fetchLatLong}
-          fetchPronosticoExtendido={fetchPronosticoExtendido}
-          city={city}
-          setExtendido={setExtendido}
-          countryCode={countryCode}
-        />
+{
+ dataWeather && 
+    (
+        <>
+        <div className='weatherMapa'>
+            <div className='cardWeather'>
+                <h2>
+                    {dataWeather.name} 
+                </h2>
+            <div className='cityIcon'>
+                <img className='iconWeather' src={`https://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`} alt='Icono del clima de la ciudad'/>
+                <p className='temperature'>{dataWeather?.main?.temp} ºC</p>
+            </div>
+            <div className='subIcon'>
+                <img className='iconCondicion me-2' src={imagenes.img3} alt="Condición climática" />
+                <p className='meteorologicalConditions mt-3'>Condición Meteorológica: {dataWeather.weather[0].description}</p>
+            </div>
+            <ul className='weatherList mt-4 pb-5'>
+                <div className='subIcon'>
+                    <img className='iconHumedad me-2' src={imagenes.img4} alt="Humedad" />
+                    <li>Humedad: {dataWeather.main.humidity}%</li>
+                </div>
+                <div className='subIcon'>
+                    <img className='iconVisibility  me-2' src={imagenes.img5} alt="Visibilidad" />
+                    <li className='mt-3'>Visibilidad: {dataWeather.visibility / difVisibility}km</li>
+                </div>
+            </ul>
+            </div>
+            <div className='mapa'>
+                <Mapas
+                        API_KEY={API_KEY}
+                        city={city}
+                        countryCode={countryCode}
+                        latLong={latLong}
+                        handleOnsubmit={handleOnsubmit}
+                        fetchLatLong={fetchLatLong}
+                />
+            </div>
+        </div>
+        </>
+    )
+}
+         </div>{!error && (
+            <PronosticoExt
+                difVisibility={difVisibility}
+                extendido={extendido}
+                fetchLatLong={fetchLatLong}
+                fetchPronosticoExtendido={fetchPronosticoExtendido}
+                city={city}
+                setExtendido={setExtendido}
+                countryCode={countryCode}
+            />
       )}
-        
-        
-    </>
+   </>
   )
 }
