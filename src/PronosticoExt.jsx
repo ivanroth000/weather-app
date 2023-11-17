@@ -7,6 +7,7 @@ import imagenes from './assets/imagenes';
  export const PronosticoExt = ({ extendido, fetchLatLong, fetchPronosticoExtendido, city, countryCode, setExtendido, difVisibility }) => {
     
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
+    const API_KEY = import.meta.env.VITE_API_KEY;
     
     //Con los valores de latitud y longitud devuelve el pronóstico extendido
     useEffect(() => {
@@ -26,7 +27,7 @@ import imagenes from './assets/imagenes';
           }, [city, countryCode, fetchLatLong, fetchPronosticoExtendido, setExtendido]);
         
     
-    const API_KEY = '49fac957264482c16f59408174700d7c'
+
     
     //Solo devuelve los próximos 5 días
     let fechaActual = new Date();
