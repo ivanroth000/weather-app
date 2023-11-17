@@ -6,11 +6,13 @@ body {
     text-align: center;
     background:#71b1e9;
   }
+
   .spinner{
     width: 700px;
     color: rgb(0, 0, 0);
     border: 7px solid #000000;
   }
+
   .weatherMapa {
     display: flex;
     justify-content: space-around;
@@ -23,17 +25,13 @@ body {
     border-radius: 10px;
     margin-top: 45px;
     box-shadow: 10px 10px 2px rgba(0, 0, 0, .5);
-    /*box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);*/
   }
 
-
-  
   .logo{
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
 
   .cardWeather{
     background: #9fcdf1;
@@ -64,7 +62,7 @@ body {
 
   .inputError{
     border: 2px solid red;
-}
+  }
 
  .messageError{
     color: rgb(220, 33, 33);
@@ -91,8 +89,6 @@ body {
     justify-content: center;
   }
   
-  
-
   input{
     max-width: 600px;
     display: block;
@@ -105,9 +101,7 @@ body {
   .weatherList{
     list-style-type: none;
     padding-right: 40px;
-    
   }
-
 
   button {
     padding: 10px 20px;
@@ -128,11 +122,9 @@ body {
     justify-content: center;
   }
 
-
   h2 {
     font-size: 30px;
     font-weight: bold;
-   
     margin-top: 20px;
   }
   
@@ -141,7 +133,6 @@ body {
     font-weight: bolder;
     margin-top: 20px;
   }
-
 
   .temperatureExtendido{
     font-size: 20px;
@@ -159,6 +150,7 @@ body {
     text-transform: capitalize;
     font-weight: bold;
   }
+  
   .meteorologicalConditionsExtendido{
     text-transform: capitalize;
     font-weight: bold;
@@ -173,7 +165,6 @@ body {
   .iconWeather {
     width: 120px;
     height: 120px;
-    
   }
 
   .iconWeatherExtendido{
@@ -194,7 +185,6 @@ body {
 
   .iconCondicion{
     width: 30px;
-
   }
 
   .iconHumedad{
@@ -206,7 +196,6 @@ body {
     margin-top: 12px
   }
   
-
   /* Estilos para responsive */
   
   @media (max-width: 1247px){
@@ -221,7 +210,6 @@ body {
       row-gap: 20px;
     }
     
-
     .cardExtendido-0{
       grid-area: card0;
     }

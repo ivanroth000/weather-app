@@ -54,7 +54,7 @@ import imagenes from './assets/imagenes';
             {prox5Dias.map((item, index) => {
             const tempMax = item.main.temp_max;
             const tempMin = item.main.temp_min;
-            const fecha = new Date(item.dt * 1000).toLocaleDateString();
+            const fecha = new Date(item.dt * 1000).toLocaleDateString('es-ES',{ weekday: 'long'});
             const humedad = item.main.humidity;
             const visibilidad = item.visibility;
             const weatherIcon = item.weather && item.weather.length > 0 ? item.weather[0].icon : '';
@@ -62,7 +62,7 @@ import imagenes from './assets/imagenes';
             
            return(
             <div className={`container mx-2 pt-5 cardExtendido cardExtendido-${index}`} key={index}>
-                <h1>{fecha}</h1>
+                <h1 className='meteorologicalConditionsExtendido'>{fecha}</h1>
               <div className='cityIcon'>
                 <img className='iconWeatherExtendido'
                     src={`http://openweathermap.org/img/w/${weatherIcon}.png`}

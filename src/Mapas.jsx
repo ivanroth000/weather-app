@@ -7,7 +7,7 @@ export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => 
 
     const [mapa, setMapa] = useState(null)
     const layer = 'temp_new'
-    const z = 2
+    const z = 1
     const [datos, setDatos] = useState(null);
     const [cargando, setCargando] = useState(true);
 

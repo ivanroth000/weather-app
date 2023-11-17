@@ -27,7 +27,8 @@ export const WeatherApp = () => {
     //Maneja los fetchs y su validación
     const handleOnsubmit = (e) => {
         e.preventDefault()
-        if (city.length > 0){
+        const ciudadSinEspacios = city.trim();
+        if (ciudadSinEspacios.length > 0){
             setIsValid(true)
             
              if((fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong)) && (fetchLatLong(city, countryCode))){
