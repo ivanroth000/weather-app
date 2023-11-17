@@ -7,8 +7,8 @@ import imagenes from './assets/imagenes'
 
 
 export const WeatherApp = () => {
-    
-    const API_KEY = import.meta.env.VITE_API_KEY;
+
+    const API_KEY = '49fac957264482c16f59408174700d7c'
     const countryCode = 'ISO 3166'
     const [city, setCity] = useState('')
     const [dataWeather, setDataWeather] = useState(null)
