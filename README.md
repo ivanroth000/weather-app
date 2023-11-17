@@ -57,7 +57,7 @@ Una vez resuelto el problema quedó así:
 <img src="img-ReadMe/extendido.png" alt="pronóstico extendido">
 
 Por último, leí que Open Weather Map tenía una API sobre distintos mapas a nivel mundial que mostraban la temperatura, el nivel del mar, el viento, las precipitaciones
-y las nuubes:
+y las nubes:
 
 <img src="img-ReadMe/mapa1.png" alt="mapa de open weather map">
 
@@ -86,8 +86,8 @@ Y este fue el resultado final del mapa en mi app:
 
 <img src="img-ReadMe/mapa4.png" alt="mapa de open weather map">
 
-Tengo que aclarar que el mapa no tiene la mejor resolución ya que es de la API gratuita de la página y la versión 1.0. Hay uno de mejor calidad y más completo en las versión
-2.0 pero hay que estar suscripto.
+Tengo que aclarar que el mapa no tiene la mejor resolución y a veces no anda de la mejor manera ya que es de la API gratuita de la página y la versión 1.0. Hay uno de mejor 
+calidad y más completo en las versión 2.0 pero hay que estar suscripto.
 
 Por último, hice que la aplicación sea responsive a través de los @media con css.
 
