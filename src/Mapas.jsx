@@ -3,7 +3,7 @@ import { useState, CSSProperties } from 'react'
 import { useEffect } from 'react'
 import ClipLoader from "react-spinners/ClipLoader";
 
-export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => {
+export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong, enviarDatosAlPadre }) => {
 
     const [mapa, setMapa] = useState(null)
     const layer = 'temp_new'
@@ -24,6 +24,7 @@ export const Mapas = ({ API_KEY, city, countryCode, latLong, fetchLatLong }) => 
                     setMapa(url);
                     setDatos('datos cargados')
                     setCargando(false)
+                    enviarDatosAlPadre = (datos);
                   }
                 }, 700)
     }, [city]);

@@ -4,7 +4,7 @@ import imagenes from './assets/imagenes';
 
 
     
- export const PronosticoExt = ({ extendido, fetchLatLong, fetchPronosticoExtendido, city, countryCode, setExtendido, difVisibility }) => {
+ export const PronosticoExt = ({ extendido, fetchLatLong, fetchPronosticoExtendido, city, countryCode, setExtendido, difVisibility, enviarAlPadrePronosticoExtendido }) => {
     
     const [latLong, setLatLong] = useState([{ lat: 0, lon: 0 }])
     const API_KEY = '49fac957264482c16f59408174700d7c'
@@ -22,7 +22,7 @@ import imagenes from './assets/imagenes';
                 console.error('Error al obtener datos de latitud y longitud:', error);
               }
             };
-        
+            enviarAlPadrePronosticoExtendido = (latLong)
             fetchData();
           }, [city, countryCode, fetchLatLong, fetchPronosticoExtendido, setExtendido]);
         
