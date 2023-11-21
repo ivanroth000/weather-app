@@ -50,7 +50,7 @@ export const WeatherApp = () => {
             const data = await response.json()
             setDataWeather(data)
             setError('')
-            localStorage.setItem('lastCity', city)
+           
         } catch (error) {
             console.error('Ocurrió el siguiente problema: ', error)
             setError(error.message)
@@ -80,13 +80,6 @@ export const WeatherApp = () => {
         }
     }
 
-    useEffect(() => {
-        const lastCity = localStorage.getItem('lastCity');
-        if (lastCity) {
-            setCity(lastCity);
-            
-        }
-    }, []);
     
     useEffect(() => {
         if (city) {
