@@ -24,20 +24,25 @@ export const WeatherApp = () => {
     }
 
     //Maneja los fetchs y su validación
-    const handleOnsubmit = (e) => {
-        e.preventDefault()
-        const ciudadSinEspacios = city.trim();
-        if (ciudadSinEspacios.length > 0){
-            setIsValid(true)
-            
-             if((fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong)) && (fetchLatLong(city, countryCode))){
-             
-             fetchPronosticoExtendido(latLong[0].lat, latLong[0].lon, setExtendido)
-             }
-        }else{
-            setIsValid(false)
+const handleOnsubmit = async (e) => {
+    e.preventDefault();
+    const ciudadSinEspacios = city.trim();
+    if (ciudadSinEspacios.length > 0) {
+        setIsValid(true);
+
+        try {
+            // Espera a que se completen las operaciones asíncronas
+            await fetchWeather(city, setCity, setIsValid, setError, setDataWeather, setLatLong);
+            await fetchLatLong(city, countryCode);
+            await fetchPronosticoExtendido();
+        } catch (error) {
+            setIsValid(false);
+            console.error('Ocurrió un error en el proceso: ', error);
         }
+    } else {
+        setIsValid(false);
     }
+};
     
     //Obtiene los datos de temp, humedad, icono y visibilidad
     const fetchWeather = async () => {
@@ -71,8 +76,10 @@ export const WeatherApp = () => {
 
     //Obtiene la latitud y longitud de la ciudad
     const fetchPronosticoExtendido = async ( ) => {
+        const lat = latLong[0].lat;
+        const lon = latLong[0].lon;
             try{
-            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0].lat}&lon=${latLong[0].lon}&lang=es&units=metric&cnt=35&appid=${API_KEY}`)
+            const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=es&units=metric&cnt=35&appid=${API_KEY}`)
             const data = await response.json()
             setExtendido(data)
         }catch (error){
